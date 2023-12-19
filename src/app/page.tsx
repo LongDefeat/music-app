@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1 id={styles.chordType}>Chord Notes Finder</h1>
+      <h1 className={styles.pageTitle}>Chord Notes Finder</h1>
       <form className={styles.chordForm} onSubmit={handleSubmit}>
         <label htmlFor="chord-input">Enter a chord (e.g., Cmaj7):</label>
         <input
