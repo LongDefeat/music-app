@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Chord } from "tonal";
+import { Chord, Scale } from "tonal";
 import errorStyles from "./styles/ErrorMessage.module.css";
 import styles from "./styles/Home.module.css";
 
@@ -11,6 +11,12 @@ export default function Home() {
   const [chordName, setChordName] = useState<string>("");
   const [chordType, setChordType] = useState<string>("");
   const [error, setError] = useState<string>("");
+
+  const [scaleName, setScaleName] = useState<string[]>([]);
+  const [scaleNotes, setScaleNotes] = useState<string[]>([]);
+  const [scaleAliases, setScaleAliases] = useState<string[]>([]);
+
+  const scaleInputRef = useRef<HTMLInputElement | null>(null);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,6 +38,33 @@ export default function Home() {
       setNotes(chord.notes);
       setChordType(chord.type);
       setChordName(chord.name);
+      setError("");
+    }
+
+    const form = e.target as HTMLFormElement;
+    form.reset();
+  }
+
+  function handleSubmitForScale(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    let value = scaleInputRef.current?.value.trim();
+    if (!value) {
+      setError("Please enter a valid scale.");
+      return;
+    }
+
+    const scale = Scale.get(value);
+
+    if (scale.empty) {
+      setError(`'${value}' is an invalid scale. Please try again.`);
+      setScaleNotes([]);
+      setScaleName("");
+      setScaleAliases([]);
+    } else {
+      setScaleNotes(scale.notes);
+      setScaleName(scale.name);
+      setScaleAliases(scale.aliases);
       setError("");
     }
 
@@ -65,9 +98,41 @@ export default function Home() {
             <p>
               Chord Type: <strong>{chordType.toUpperCase()}</strong>
             </p>
-            <ul className={styles.ulNoBullets}>
-              {notes.map((note) => (
-                <li key={note}>{note}</li>
+            <ul className={styles.notesList}>
+              {notes.map((note, index) => (
+                <li key={index}>{note}</li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
+
+      <form className={styles.scaleForm} onSubmit={handleSubmitForScale}>
+        <label htmlFor="scale-input">Enter a scale (e.g., C major):</label>
+        <input
+          type="text"
+          ref={scaleInputRef}
+          id="scale-input"
+          placeholder="e.g., C major"
+          required
+        />
+        <button type="submit">Find Scale</button>
+      </form>
+
+      <div id={styles.displayScale}>
+        {scaleNotes.length > 0 && (
+          <>
+            <p>
+              Scale: <strong>{scaleName.toUpperCase()}</strong>
+            </p>
+            {scaleAliases.length > 0 && (
+              <p>
+                Aliases: <strong>{scaleAliases.join(", ")}</strong>
+              </p>
+            )}
+            <ul className={styles.notesList}>
+              {scaleNotes.map((note, index) => (
+                <li key={index}>{note}</li>
               ))}
             </ul>
           </>

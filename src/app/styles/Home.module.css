@@ -6,7 +6,6 @@
   padding: 20px;
   text-align: center;
 }
-
 .pageTitle {
   font-size: 2.5rem;
   color: #d32f2f;
@@ -54,10 +53,57 @@
   background-color: #b71c1c; /* Darker shade of red */
 }
 
+.scaleForm {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.scaleForm label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.scaleForm input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cba9a9;
+  border-radius: 4px;
+}
+
+.scaleForm button {
+  padding: 10px 20px;
+  background-color: #d32f2f; /* A shade of red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .ulNoBullets {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.notesList {
+  list-style: none;
+  padding: 0;
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center items horizontally */
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 10px; /* Add some space between items */
+}
+
+.notesList li {
+  padding: 5px 10px;
+  background-color: #e09595; /* Light background for each note */
+  border-radius: 5px; /* Rounded corners */
 }
 
 /* Animations */
