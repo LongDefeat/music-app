@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Chord, Scale } from "tonal";
 import errorStyles from "./styles/ErrorMessage.module.css";
 import styles from "./styles/Home.module.css";
+import Navigation from "./components/Navigation";
 
 export default function Home() {
   const chordInputRef = useRef<HTMLInputElement | null>(null);
@@ -73,71 +74,74 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.pageTitle}>Chord Notes Finder</h1>
-      <form className={styles.chordForm} onSubmit={handleSubmit}>
-        <label htmlFor="chord-input">Enter a chord (e.g., Cmaj7):</label>
-        <input
-          type="text"
-          ref={chordInputRef}
-          id="chord-input"
-          placeholder="e.g., Cmaj7"
-          required
-        />
-        <button type="submit">Find Notes</button>
-      </form>
+    <>
+      <Navigation />
+      <div className={styles.container}>
+        <h1 className={styles.pageTitle}>Chord Notes Finder</h1>
+        <form className={styles.chordForm} onSubmit={handleSubmit}>
+          <label htmlFor="chord-input">Enter a chord (e.g., Cmaj7):</label>
+          <input
+            type="text"
+            ref={chordInputRef}
+            id="chord-input"
+            placeholder="e.g., Cmaj7"
+            required
+          />
+          <button type="submit">Find Notes</button>
+        </form>
 
-      {error && <p className={errorStyles.error}>{error}</p>}
+        {error && <p className={errorStyles.error}>{error}</p>}
 
-      <div id={styles.displayNotes}>
-        {notes.length > 0 && (
-          <>
-            <p>
-              Chord: <strong>{chordName.toUpperCase()}</strong>
-            </p>
-            <p>
-              Chord Type: <strong>{chordType.toUpperCase()}</strong>
-            </p>
-            <ul className={styles.notesList}>
-              {notes.map((note, index) => (
-                <li key={index}>{note}</li>
-              ))}
-            </ul>
-          </>
-        )}
-      </div>
-
-      <form className={styles.scaleForm} onSubmit={handleSubmitForScale}>
-        <label htmlFor="scale-input">Enter a scale (e.g., C major):</label>
-        <input
-          type="text"
-          ref={scaleInputRef}
-          id="scale-input"
-          placeholder="e.g., C major"
-          required
-        />
-        <button type="submit">Find Scale</button>
-      </form>
-
-      <div id={styles.displayScale}>
-        {scaleNotes.length > 0 && (
-          <>
-            <p>
-              Scale: <strong>{scaleName.toUpperCase()}</strong>
-            </p>
-            {scaleAliases.length > 0 && (
+        <div id={styles.displayNotes}>
+          {notes.length > 0 && (
+            <>
               <p>
-                Aliases: <strong>{scaleAliases.join(", ")}</strong>
+                Chord: <strong>{chordName.toUpperCase()}</strong>
               </p>
-            )}
-            <ul className={styles.notesList}>
-              {scaleNotes.map((note, index) => (
-                <li key={index}>{note}</li>
-              ))}
-            </ul>
-          </>
-        )}
+              <p>
+                Chord Type: <strong>{chordType.toUpperCase()}</strong>
+              </p>
+              <ul className={styles.notesList}>
+                {notes.map((note, index) => (
+                  <li key={index}>{note}</li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+
+        <form className={styles.scaleForm} onSubmit={handleSubmitForScale}>
+          <label htmlFor="scale-input">Enter a scale (e.g., C major):</label>
+          <input
+            type="text"
+            ref={scaleInputRef}
+            id="scale-input"
+            placeholder="e.g., C major"
+            required
+          />
+          <button type="submit">Find Scale</button>
+        </form>
+
+        <div id={styles.displayScale}>
+          {scaleNotes.length > 0 && (
+            <>
+              <p>
+                Scale: <strong>{scaleName.toUpperCase()}</strong>
+              </p>
+              {scaleAliases.length > 0 && (
+                <p>
+                  Aliases: <strong>{scaleAliases.join(", ")}</strong>
+                </p>
+              )}
+              <ul className={styles.notesList}>
+                {scaleNotes.map((note, index) => (
+                  <li key={index}>{note}</li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

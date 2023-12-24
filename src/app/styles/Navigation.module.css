@@ -1,0 +1,44 @@
+/* Navigation.module.css */
+.nav {
+  background: #282c34; /* Dark background for the navigation bar */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center; /* Center the navigation items */
+  align-items: center;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 1rem;
+}
+
+.navLink {
+  color: #61dafb; /* Light blue color for links */
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: #ffffff; /* White color on hover/focus */
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .navItem {
+    margin: 0.5rem 0;
+  }
+}
