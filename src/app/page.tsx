@@ -11,6 +11,8 @@ export default function Home() {
   const [notes, setNotes] = useState<string[]>([]);
   const [chordName, setChordName] = useState<string>("");
   const [chordType, setChordType] = useState<string>("");
+  const [chordInversions, setChordInversions] = useState<string>("");
+
   const [error, setError] = useState<string>("");
 
   const [scaleName, setScaleName] = useState<string[]>([]);
@@ -19,6 +21,15 @@ export default function Home() {
   const [scaleDegrees, setScaleDegrees] = useState<string[]>([]);
 
   const scaleInputRef = useRef<HTMLInputElement | null>(null);
+
+  function getChordInversions(chordNotes: string[]): string[] {
+    const inversions: string[] = [];
+    for (let i = 0; i < chordNotes.length; i++) {
+      let inverted = chordNotes.slice(i).concat(chordNotes.slice(0, i));
+      inversions.push(inverted.join(" "));
+    }
+    return inversions;
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -30,21 +41,19 @@ export default function Home() {
     }
 
     const chord = Chord.get(value);
-    console.log(chord);
 
     if (chord.empty) {
       setError(`'${value}' is an invalid chord. Please try again.`);
       setNotes([]);
       setChordType("");
+      setChordInversions([]); // Reset chord inversions
     } else {
       setNotes(chord.notes);
       setChordType(chord.type);
       setChordName(chord.name);
       setError("");
+      setChordInversions(getChordInversions(chord.notes)); // Calculate and set chord inversions
     }
-
-    const form = e.target as HTMLFormElement;
-    form.reset();
   }
 
   function handleSubmitForScale(e: React.FormEvent<HTMLFormElement>) {
@@ -111,6 +120,21 @@ export default function Home() {
                 {notes.map((note, index) => (
                   <li className={styles.notesListItem} key={index}>
                     <span className={styles.noteName}>{note}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
+
+        <div id={styles.displayChordInversions}>
+          {chordInversions.length > 0 && (
+            <>
+              <p>Inversions:</p>
+              <ul className={styles.inversionList}>
+                {chordInversions.map((inversion, index) => (
+                  <li key={index} className={styles.inversionListItem}>
+                    {inversion}
                   </li>
                 ))}
               </ul>
