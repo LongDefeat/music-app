@@ -16,6 +16,7 @@ export default function Home() {
   const [scaleName, setScaleName] = useState<string[]>([]);
   const [scaleNotes, setScaleNotes] = useState<string[]>([]);
   const [scaleAliases, setScaleAliases] = useState<string[]>([]);
+  const [scaleDegrees, setScaleDegrees] = useState<string[]>([]);
 
   const scaleInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -62,11 +63,16 @@ export default function Home() {
       setScaleNotes([]);
       setScaleName("");
       setScaleAliases([]);
+      setScaleDegrees([]); // Reset scale degrees
     } else {
       setScaleNotes(scale.notes);
       setScaleName(scale.name);
       setScaleAliases(scale.aliases);
       setError("");
+
+      // Compute and set scale degrees
+      const degrees = scale.notes.map((_, index) => `${index + 1}`);
+      setScaleDegrees(degrees);
     }
 
     const form = e.target as HTMLFormElement;
@@ -103,7 +109,9 @@ export default function Home() {
               </p>
               <ul className={styles.notesList}>
                 {notes.map((note, index) => (
-                  <li key={index}>{note}</li>
+                  <li className={styles.notesListItem} key={index}>
+                    <span className={styles.noteName}>{note}</span>
+                  </li>
                 ))}
               </ul>
             </>
@@ -135,12 +143,19 @@ export default function Home() {
               )}
               <ul className={styles.notesList}>
                 {scaleNotes.map((note, index) => (
-                  <li key={index}>{note}</li>
+                  <li key={index} className={styles.notesListItem}>
+                    <span className={styles.noteName}>{note}</span>
+                    <span className={styles.noteDegree}>
+                      Degree: {scaleDegrees[index]}
+                    </span>
+                  </li>
                 ))}
               </ul>
             </>
           )}
         </div>
+
+        {/* ... rest of the component ... */}
       </div>
     </>
   );

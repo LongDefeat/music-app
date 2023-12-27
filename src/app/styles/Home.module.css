@@ -95,15 +95,30 @@
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 10px; /* Space between items */
+  justify-content: center; /* Center items horizontally */
 }
 
-.notesList li {
-  padding: 5px 10px;
-  background-color: #e09595;
-  border-radius: 5px;
+.notesListItem {
+  padding: 8px 12px;
+  background-color: #f0f0f0; /* Light background for each item */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center;
+}
+
+.noteName {
+  font-size: 1.1rem; /* Larger font size for note name */
+  color: #333;
+  font-weight: bold;
+}
+
+.noteDegree {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px; /* Space between note name and degree */
+  display: block; /* Degree in new line */
 }
 
 /* Animations */
