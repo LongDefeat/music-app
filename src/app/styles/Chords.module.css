@@ -1,0 +1,21 @@
+.chordExplorer {
+  padding: 20px;
+}
+
+.chordSection {
+  margin-bottom: 20px;
+}
+
+.chordSection h2 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.chordSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.chordSection li {
+  margin: 5px 0;
+}
