@@ -100,6 +100,43 @@ export default function SongwritingTool() {
       <Navigation />
       <div className={styles.songwritingTool}>
         <h1>Songwriting Tool</h1>
+        <p>
+          This page allows you to explore different keys and their respective
+          modal chord movements. The following may be useful with generating
+          chord structures by your choice or through the generator button below.
+        </p>
+        <ul>
+          <li>
+            <strong>Ionian (Major):</strong> Uses the standard major scale chord
+            sequence - Major, minor, minor, Major, Major, minor, diminished.
+          </li>
+          <li>
+            <strong>Dorian:</strong> Similar to the minor scale but with a major
+            chord on the IV degree.
+          </li>
+          <li>
+            <strong>Phyrigian:</strong> Similar to the minor scale but with a
+            diminished chord on the II degree and a major chord on the III
+            degree.
+          </li>
+          <li>
+            <strong>Lydian:</strong> Similar to the major scale but with a
+            diminished chord on the II degree.
+          </li>
+          <li>
+            <strong>Mixolydian:</strong> Similar to the major scale but with a
+            minor chord on the VII degree.
+          </li>
+          <li>
+            <strong>Aeolian (Natural Minor):</strong> Uses the standard minor
+            scale chord sequence - minor, diminished, Major, minor, minor,
+            Major, Major.
+          </li>
+          <li>
+            <strong>Locrian:</strong> Characterized by a diminished chord on the
+            I degree, and major chords on the II and IV degrees.
+          </li>
+        </ul>
 
         {/* Key and Scale Selection */}
         <div className={styles.section}>
