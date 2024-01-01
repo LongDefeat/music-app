@@ -1,23 +1,24 @@
+/* globals.css */
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
+  font-family: sans-serif; /* Example font, adjust as needed */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: #333; /* Default text color, replace with your variable or preferred color */
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    transparent,
+    #f0f0f0
+  ); /* Example gradient, adjust as needed */
 }
 
 a {
@@ -26,7 +27,13 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
+  body {
     color-scheme: dark;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      #333
+    ); /* Dark mode background */
+    color: #fff; /* Dark mode text color */
   }
 }

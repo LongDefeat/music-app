@@ -1,0 +1,77 @@
+/* SongwritingTool.module.css */
+.songwritingTool {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.songwritingTool h1 {
+  text-align: center;
+  color: #333;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+.select {
+  width: 100%; /* Responsive width */
+  max-width: 300px; /* Maximum width */
+  padding: 8px;
+  margin: 0 auto 15px; /* Centering the select box */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button.generateChords {
+  padding: 10px 20px;
+  background-color: #28a745; /* Green background */
+  background-image: linear-gradient(
+    to right,
+    #34ce57,
+    #28a745
+  ); /* Gradient effect */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #1c7430; /* 3D effect */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.button.generateChords:hover,
+.button.generateChords:focus {
+  background-color: #34ce57;
+  box-shadow: 0 2px #1c7430;
+  transform: translateY(2px); /* Button press effect */
+}
+
+.displayedProgression {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+  color: #4caf50;
+}

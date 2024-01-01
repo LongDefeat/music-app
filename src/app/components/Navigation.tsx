@@ -16,6 +16,16 @@ export default function Navigation() {
             Scales
           </Link>
         </li>
+        <li className={styles.navItem}>
+          <Link href="/chords" className={styles.navLink}>
+            Chords
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/songwriting" className={styles.navLink}>
+            Songwriting Tool
+          </Link>
+        </li>
       </ul>
     </nav>
   );

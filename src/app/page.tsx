@@ -52,7 +52,8 @@ export default function Home() {
       setChordType(chord.type);
       setChordName(chord.name);
       setError("");
-      setChordInversions(getChordInversions(chord.notes)); // Calculate and set chord inversions
+      // calculate and set chord inversions
+      setChordInversions(getChordInversions(chord.notes));
     }
   }
 
@@ -158,7 +159,7 @@ export default function Home() {
           {scaleNotes.length > 0 && (
             <>
               <p>
-                Scale: <strong>{scaleName.toUpperCase()}</strong>
+                Scale: <strong>{scaleName}</strong>
               </p>
               {scaleAliases.length > 0 && (
                 <p>
