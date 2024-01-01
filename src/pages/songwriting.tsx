@@ -91,12 +91,6 @@ export default function SongwritingTool() {
     setCustomProgression(newProgression);
   };
 
-  const handleSubmit = () => {
-    const chords = getChordsInScale(selectedKey, selectedScale);
-    setAvailableChords(chords);
-    setCustomProgression(new Array(4).fill("")); // Optional: Reset custom progression
-  };
-
   const handleSubmitProgression = () => {
     setDisplayedProgression(customProgression.join(" - "));
   };
@@ -144,16 +138,9 @@ export default function SongwritingTool() {
           </select>
         </div>
 
-        {/* Submit Button */}
-        <div className={styles.button}>
-          <button className={`${styles.button} ${styles.generateChords}`}>
-            Generate Chords
-          </button>
-        </div>
-
         {/* Custom Chord Progression */}
         <div>
-          <h2>Customize Chord Progression</h2>
+          <h2 className={styles.sectionTitle}>Customize Chord Progression</h2>
           {customProgression.map((chord, index) => (
             <div key={index}>
               <label className={styles.label}>Chord {index + 1}:</label>
