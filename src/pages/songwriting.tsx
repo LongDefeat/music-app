@@ -7,6 +7,15 @@ import styles from "../app/styles/Songwriting.module.css";
 export default function SongwritingTool() {
   const keys: string[] = ["A", "B", "C", "D", "E", "F", "G"];
   const scales: string[] = ["major", "minor"];
+  const modes = [
+    { name: "Ionian (Major)", value: "major" },
+    { name: "Dorian", value: "dorian" },
+    { name: "Phrygian", value: "phrygian" },
+    { name: "Lydian", value: "lydian" },
+    { name: "Mixolydian", value: "mixolydian" },
+    { name: "Aeolian (Minor)", value: "minor" },
+    { name: "Locrian", value: "locrian" },
+  ];
 
   const majorScaleChords: string[] = [
     "major",
@@ -45,11 +54,17 @@ export default function SongwritingTool() {
     const scaleChords =
       scaleType === "major" ? majorScaleChords : minorScaleChords;
     const scale = Scale.get(`${key} ${scaleType}`).notes;
+    let chordPattern = majorScaleChords;
+    if (scaleType !== "major") {
+      // Shift chord pattern based on the mode
+      const modeIndex = modes.findIndex((mode) => mode.value === scaleType);
+      chordPattern = [
+        ...majorScaleChords.slice(modeIndex),
+        ...majorScaleChords.slice(0, modeIndex),
+      ];
+    }
 
-    return scale.map((note, index) => {
-      const chordType = scaleChords[index];
-      return `${note} ${chordType}`;
-    });
+    return scale.map((note, index) => `${note} ${chordPattern[index]}`);
   };
 
   const generateProgressionSuggestion = () => {
@@ -113,17 +128,17 @@ export default function SongwritingTool() {
 
         <div className={styles.section}>
           <label className={styles.label} htmlFor="scale-select">
-            Choose a Scale:
+            Choose a Scale/Mode:
           </label>
           <select
             id="scale-select"
+            className={styles.select}
             value={selectedScale}
             onChange={handleScaleChange}
-            className={styles.select}
           >
-            {scales.map((scale) => (
-              <option key={scale} value={scale}>
-                {scale}
+            {modes.map((mode) => (
+              <option key={mode.value} value={mode.value}>
+                {mode.name}
               </option>
             ))}
           </select>
