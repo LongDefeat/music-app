@@ -2,11 +2,12 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import { Chord, Scale } from "tonal";
 import Navigation from "@/app/components/Navigation";
 
+// styling
 import styles from "../app/styles/Songwriting.module.css";
 
 export default function SongwritingTool() {
+  // Modes/Scales and Keys
   const keys: string[] = ["A", "B", "C", "D", "E", "F", "G"];
-  const scales: string[] = ["major", "minor"];
   const modes = [
     { name: "Ionian (Major)", value: "major" },
     { name: "Dorian", value: "dorian" },
@@ -36,6 +37,17 @@ export default function SongwritingTool() {
     "major",
   ];
 
+  const scalesAndModes = [
+    "Ionian (Major)",
+    "Dorian",
+    "Phrygian",
+    "Lydian",
+    "Mixolydian",
+    "Aeolian (Minor)",
+    "Locrian",
+  ];
+
+  // User Selected Keys, Chords, and Progressions
   const [selectedKey, setSelectedKey] = useState<string>("C");
   const [selectedScale, setSelectedScale] = useState<string>("major");
   const [availableChords, setAvailableChords] = useState<string[]>([]);
@@ -43,7 +55,15 @@ export default function SongwritingTool() {
     new Array(4).fill("")
   );
 
+  // Displayed Progressions
   const [displayedProgression, setDisplayedProgression] = useState<string>("");
+
+  // New state variables for autocomplete
+  const [keyInput, setKeyInput] = useState("");
+  const [scaleInput, setScaleInput] = useState("");
+  const [keySuggestions, setKeySuggestions] = useState<string[]>(keys);
+  const [scaleSuggestions, setScaleSuggestions] =
+    useState<string[]>(scalesAndModes);
 
   useEffect(() => {
     const chords = getChordsInScale(selectedKey, selectedScale);
@@ -95,6 +115,27 @@ export default function SongwritingTool() {
     setDisplayedProgression(customProgression.join(" - "));
   };
 
+  // Event handlers for input changes
+  const handleKeyInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const userInput = e.target.value;
+    setKeyInput(userInput);
+    setKeySuggestions(
+      keys.filter((key) =>
+        key.toLowerCase().startsWith(userInput.toLowerCase())
+      )
+    );
+  };
+
+  const handleScaleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const userInput = e.target.value;
+    setScaleInput(userInput);
+    setScaleSuggestions(
+      scalesAndModes.filter((scale) =>
+        scale.toLowerCase().startsWith(userInput.toLowerCase())
+      )
+    );
+  };
+
   return (
     <>
       <Navigation />
@@ -138,16 +179,16 @@ export default function SongwritingTool() {
           </li>
         </ul>
 
-        {/* Key and Scale Selection */}
+        {/* Key and Scale/Mode Selection */}
         <div className={styles.section}>
           <label className={styles.label} htmlFor="key-select">
             Choose a Key:
           </label>
           <select
             id="key-select"
+            className={styles.select}
             value={selectedKey}
             onChange={handleKeyChange}
-            className={styles.select}
           >
             {keys.map((key) => (
               <option key={key} value={key}>
@@ -208,7 +249,7 @@ export default function SongwritingTool() {
             Generate Progression
           </button>
         </div>
-        {/* Display Selected Progression */}
+        {/* Display Progression */}
         {displayedProgression && (
           <div className={styles.displayedProgression}>
             <strong>Chord Progression: </strong> {displayedProgression}
