@@ -26,6 +26,11 @@ export default function Navigation() {
             Songwriting Tool
           </Link>
         </li>
+        <li className={styles.navItem}>
+          <Link href="/melody" className={styles.navLink}>
+            Melody Creator
+          </Link>
+        </li>
       </ul>
     </nav>
   );

@@ -7,7 +7,26 @@ import styles from "../app/styles/Songwriting.module.css";
 
 export default function SongwritingTool() {
   // Modes/Scales and Keys
-  const keys: string[] = ["A", "B", "C", "D", "E", "F", "G"];
+  // Modes/Scales and Keys
+  const keys: string[] = [
+    "A",
+    "A#",
+    "Bb",
+    "B",
+    "C",
+    "C#",
+    "Db",
+    "D",
+    "D#",
+    "Eb",
+    "E",
+    "F",
+    "F#",
+    "Gb",
+    "G",
+    "G#",
+    "Ab",
+  ];
   const modes = [
     { name: "Ionian (Major)", value: "major" },
     { name: "Dorian", value: "dorian" },
@@ -70,6 +89,20 @@ export default function SongwritingTool() {
     setAvailableChords(chords);
   }, [selectedKey, selectedScale]);
 
+  const normalizeNote = (note) => {
+    // Add more cases as necessary
+    const enharmonicEquivalents = {
+      "G##": "A",
+      "E##": "F#",
+      "B#": "C",
+      Cb: "B",
+      "C##": "C#",
+      "F##": "F#",
+    };
+
+    return enharmonicEquivalents[note] || note;
+  };
+
   const getChordsInScale = (key: string, scaleType: string): string[] => {
     const scaleChords =
       scaleType === "major" ? majorScaleChords : minorScaleChords;
@@ -84,7 +117,9 @@ export default function SongwritingTool() {
       ];
     }
 
-    return scale.map((note, index) => `${note} ${chordPattern[index]}`);
+    return scale.map(
+      (note, index) => `${normalizeNote(note)} ${chordPattern[index]}`
+    );
   };
 
   const generateProgressionSuggestion = () => {
@@ -113,27 +148,6 @@ export default function SongwritingTool() {
 
   const handleSubmitProgression = () => {
     setDisplayedProgression(customProgression.join(" - "));
-  };
-
-  // Event handlers for input changes
-  const handleKeyInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const userInput = e.target.value;
-    setKeyInput(userInput);
-    setKeySuggestions(
-      keys.filter((key) =>
-        key.toLowerCase().startsWith(userInput.toLowerCase())
-      )
-    );
-  };
-
-  const handleScaleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const userInput = e.target.value;
-    setScaleInput(userInput);
-    setScaleSuggestions(
-      scalesAndModes.filter((scale) =>
-        scale.toLowerCase().startsWith(userInput.toLowerCase())
-      )
-    );
   };
 
   return (
