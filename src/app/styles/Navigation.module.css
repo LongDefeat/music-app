@@ -1,44 +1,82 @@
 /* Navigation.module.css */
 .nav {
-  background: #282c34; /* Dark background for the navigation bar */
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
   color: #fff;
-  padding: 0.5rem 1rem;
   display: flex;
-  justify-content: center; /* Center the navigation items */
+  justify-content: space-between;
   align-items: center;
 }
 
-.navList {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
+#logo {
+  display: block;
+  padding: 0 30px;
+  font-size: 20px;
+  line-height: 60px;
 }
 
-.navItem {
-  margin: 0 1rem;
+.navList {
+  display: none;
 }
 
 .navLink {
-  color: #61dafb; /* Light blue color for links */
+  display: block;
+  padding: 0 20px;
+  color: #61dafb;
+  font-size: 20px;
+  line-height: 60px;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
 }
 
 .navLink:hover,
 .navLink:focus {
-  color: #ffffff; /* White color on hover/focus */
-  text-decoration: underline;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .nav {
     flex-direction: column;
   }
 
-  .navItem {
-    margin: 0.5rem 0;
+  .bm-burger-button {
+    display: block;
   }
+
+  .navList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navItem {
+    display: block;
+    width: 100%;
+  }
+
+  .navLink {
+    padding: 0 40px;
+  }
+}
+
+.burgerIcon {
+  /* ... your styles ... */
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.burgerIcon:hover {
+  color: #61dafb; /* Example color */
 }

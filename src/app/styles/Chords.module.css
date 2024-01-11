@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  background: linear-gradient(to bottom, transparent, #f0f0f0);
 }
 .pageTitle {
   font-size: 2.5rem;

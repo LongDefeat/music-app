@@ -3,8 +3,10 @@
 import { useRef, useState } from "react";
 import { Chord, Scale } from "tonal";
 import errorStyles from "./styles/ErrorMessage.module.css";
-import styles from "./styles/Home.module.css";
 import Navigation from "./components/Navigation";
+
+/* styling */
+import styles from "./styles/Home.module.css";
 
 export default function Home() {
   const chordInputRef = useRef<HTMLInputElement | null>(null);

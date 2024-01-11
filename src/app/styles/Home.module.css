@@ -1,58 +1,14 @@
-/* styles/MainPage.module.css */
+/* styles/Home.module.css */
 
 .container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-}
-.pageTitle {
-  font-size: 2.5rem;
-  color: #d32f2f;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  display: inline-block;
-  animation: waveAnimation 5s ease-in-out infinite;
-}
-.chordForm {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  background: linear-gradient(to bottom, transparent, #f0f0f0);
 }
 
-.chordForm label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.chordForm input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.chordForm button {
-  padding: 10px 20px;
-  background-color: #d32f2f;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.chordForm button:hover {
-  background-color: #b71c1c;
-}
-
+.chordForm,
 .scaleForm {
   background-color: #fff;
   padding: 20px;
@@ -61,20 +17,23 @@
   margin-bottom: 20px;
 }
 
+.chordForm label,
 .scaleForm label {
   display: block;
   margin-bottom: 5px;
   color: #333;
 }
 
+.chordForm input,
 .scaleForm input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #cba9a9;
+  border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+.chordForm button,
 .scaleForm button {
   padding: 10px 20px;
   background-color: #d32f2f;
@@ -85,68 +44,37 @@
   transition: background-color 0.3s ease;
 }
 
-.ulNoBullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.chordForm button:hover,
+.scaleForm button:hover {
+  background-color: #b71c1c;
 }
 
-.notesList {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Space between items */
-  justify-content: center; /* Center items horizontally */
-}
-
-.notesListItem {
-  padding: 8px 12px;
-  background-color: #f0f0f0; /* Light background for each item */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  text-align: center;
-}
-
-.noteName {
-  font-size: 1.1rem; /* Larger font size for note name */
-  color: #333;
-  font-weight: bold;
-}
-
-.noteDegree {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 4px; /* Space between note name and degree */
-  display: block; /* Degree in new line */
-}
-
+.ulNoBullets,
+.notesList,
 .inversionList {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Space between items */
-  justify-content: center; /* Center items horizontally */
+  gap: 10px;
+  justify-content: center;
 }
 
+.notesListItem,
 .inversionListItem {
   padding: 8px 12px;
-  background-color: #e8f0fe; /* Light blue background for contrast */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  font-size: 1rem;
-  color: #333; /* Darker text color for readability */
 }
 
-/* Animations */
-@keyframes waveAnimation {
-  0%,
-  100% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
+.noteName,
+.noteDegree {
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+  margin-top: 4px;
+  display: block;
 }
