@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import { Scale } from "tonal";
+import Navigation from "@/app/components/Navigation";
+
 import styles from "../app/styles/Songwriting.module.css";
 
 type NoteDuration = "whole" | "half" | "quarter";
@@ -96,54 +98,57 @@ const MelodyGenerator: React.FC = () => {
   };
 
   return (
-    <div className={styles.songwritingTool}>
-      <h1>Melody Generator</h1>
-      <div>
-        <label className={styles.label} htmlFor="key-select">
-          Choose a Key:
-        </label>
-        <select
-          id="key-select"
-          className={styles.select}
-          value={selectedKey}
-          onChange={handleKeyChange}
-        >
-          {keys.map((key) => (
-            <option key={key} value={key}>
-              {key}
-            </option>
+    <>
+      <Navigation />
+      <div className={styles.songwritingTool}>
+        <h1>Melody Generator</h1>
+        <div>
+          <label className={styles.label} htmlFor="key-select">
+            Choose a Key:
+          </label>
+          <select
+            id="key-select"
+            className={styles.select}
+            value={selectedKey}
+            onChange={handleKeyChange}
+          >
+            {keys.map((key) => (
+              <option key={key} value={key}>
+                {key}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className={styles.label} htmlFor="scale-select">
+            Choose a Scale:
+          </label>
+          <select
+            id="scale-select"
+            className={styles.select}
+            value={selectedScale}
+            onChange={handleScaleChange}
+          >
+            {scales.map((scale) => (
+              <option key={scale} value={scale}>
+                {scale}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button className={styles.button} onClick={generateMelody}>
+          Generate Melody
+        </button>
+        <div className={styles.melodyDisplay}>
+          {melody.map((element, index) => (
+            <div key={index} className={styles.note}>
+              {element.note ? element.note : "Rest"}
+              <span className={styles.duration}>({element.duration})</span>
+            </div>
           ))}
-        </select>
+        </div>
       </div>
-      <div>
-        <label className={styles.label} htmlFor="scale-select">
-          Choose a Scale:
-        </label>
-        <select
-          id="scale-select"
-          className={styles.select}
-          value={selectedScale}
-          onChange={handleScaleChange}
-        >
-          {scales.map((scale) => (
-            <option key={scale} value={scale}>
-              {scale}
-            </option>
-          ))}
-        </select>
-      </div>
-      <button className={styles.button} onClick={generateMelody}>
-        Generate Melody
-      </button>
-      <div className={styles.melodyDisplay}>
-        {melody.map((element, index) => (
-          <div key={index} className={styles.note}>
-            {element.note ? element.note : "Rest"}
-            <span className={styles.duration}>({element.duration})</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 
