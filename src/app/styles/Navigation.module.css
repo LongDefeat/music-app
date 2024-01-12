@@ -2,10 +2,9 @@
 .nav {
   margin: 0;
   padding: 0;
-  background-color: #282c34;
-  color: #fff;
+  background-color: #282c34; /* Updated background color */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Adjust to space items */
   align-items: center;
 }
 
@@ -14,6 +13,14 @@
   padding: 0 30px;
   font-size: 20px;
   line-height: 60px;
+  margin-left: auto;
+}
+
+.burgerIcon {
+  cursor: pointer;
+  margin-left: auto;
+  padding-right: 10px;
+  color: rgb(111, 111, 206);
 }
 
 .navList {
@@ -23,7 +30,7 @@
 .navLink {
   display: block;
   padding: 0 20px;
-  color: #61dafb;
+  color: rgb(111, 111, 206);
   font-size: 20px;
   line-height: 60px;
   text-decoration: none;
@@ -41,8 +48,13 @@
     flex-direction: column;
   }
 
-  .bm-burger-button {
-    display: block;
+  .burgerIcon {
+    display: block; /* Show on smaller screens */
+  }
+
+  /* Hide full menu on smaller screens */
+  .navList {
+    display: none;
   }
 
   .navList {

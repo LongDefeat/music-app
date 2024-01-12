@@ -13,6 +13,7 @@
     "react": "^18",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18",
+    "react-icons": "^5.0.1",
     "tonal": "^5.1.2"
   },
   "devDependencies": {
