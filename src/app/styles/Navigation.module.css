@@ -1,7 +1,5 @@
 /* Navigation.module.css */
 .nav {
-  margin: 0;
-  padding: 0;
   background-color: #282c34; /* Updated background color */
   display: flex;
   justify-content: space-between; /* Adjust to space items */
@@ -12,19 +10,25 @@
   display: block;
   padding: 0 30px;
   font-size: 20px;
-  line-height: 60px;
   margin-left: auto;
+}
+
+.menuContainer {
+  display: flex;
+  align-items: center;
+  width: 5px;
+  height: 10px;
 }
 
 .burgerIcon {
-  cursor: pointer;
-  margin-left: auto;
-  padding-right: 10px;
   color: rgb(111, 111, 206);
+  cursor: pointer;
+  padding: 10px;
 }
 
-.navList {
-  display: none;
+#react-burger-menu-btn {
+  height: 10px;
+  width: 10px;
 }
 
 .navLink {
@@ -47,7 +51,6 @@
   .nav {
     flex-direction: column;
   }
-
   .burgerIcon {
     display: block; /* Show on smaller screens */
   }
@@ -72,23 +75,6 @@
   }
 }
 
-.burgerIcon {
-  /* ... your styles ... */
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 .burgerIcon:hover {
-  color: #61dafb; /* Example color */
+  color: #61dafb;
 }

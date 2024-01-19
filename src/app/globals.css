@@ -8,7 +8,7 @@
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   font-family: Arial, sans-serif; /* Standardize font */
   background: linear-gradient(to bottom, transparent, #f0f0f0);
   color: #333;
@@ -18,14 +18,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  body {
-    background: linear-gradient(to bottom, transparent, #333);
-    color: #fff;
-  }
-} */
-
 .pageTitle,
 .chordSection h2 {
   font-size: 2.5rem;
