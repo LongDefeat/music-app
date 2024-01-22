@@ -1,46 +1,43 @@
-import { slide as Menu } from "react-burger-menu";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { RiMenu3Line } from "react-icons/ri";
+
+import { PiMusicNotesFill } from "react-icons/pi";
 
 import styles from "../styles/Navigation.module.css";
 
 export default function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <nav className={styles.nav}>
-      <div id="logo">
-        <Image src="/music-logo.png" alt="logo" width={200} height={100} />
+      <div id="logo" className={styles.logoAnimation}>
+        <PiMusicNotesFill className={styles.logo} />
       </div>
-
-      <div className={styles.menuContainer} onClick={handleMenuClick}>
-        <div className={styles.burgerIcon}>
-          <RiMenu3Line />
-        </div>
-        <Menu right isOpen={isMenuOpen} id="react-burger-menu-btn">
+      <ul className={styles.navList}>
+        <li className={styles.navItem}>
           <Link href="/" className={styles.navLink}>
             Home
           </Link>
+        </li>
+        <li className={styles.navItem}>
           <Link href="/scales" className={styles.navLink}>
             Scales
           </Link>
+        </li>
+        <li className={styles.navItem}>
           <Link href="/chords" className={styles.navLink}>
             Chords
           </Link>
+        </li>
+        <li className={styles.navItem}>
           <Link href="/songwriting" className={styles.navLink}>
             Songwriting Tool
           </Link>
+        </li>
+        <li className={styles.navItem}>
           <Link href="/melody" className={styles.navLink}>
             Melody Generator
           </Link>
-        </Menu>
-      </div>
+        </li>
+      </ul>
     </nav>
   );
 }

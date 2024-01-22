@@ -93,7 +93,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <Navigation /> */}
+      <Navigation />
       <div className={styles.container}>
         <h1 className={styles.pageTitle}>Chord Notes Finder</h1>
         <form className={styles.chordForm} onSubmit={handleSubmit}>
