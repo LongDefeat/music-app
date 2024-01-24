@@ -4,7 +4,7 @@ import * as Tone from "tone";
 export const MetroContext = createContext({});
 
 const MetroContextProvider: React.FC = ({ children }) => {
-  const [bpm, setBpm] = useState(120);
+  const [bpm, setBpm] = useState(100);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const MetroContextProvider: React.FC = ({ children }) => {
 
   const playSound = (time: number) => {
     const synth = new Tone.Synth().toDestination();
-    synth.triggerAttackRelease("C4", "8n", time);
+    synth.triggerAttackRelease("C3", "8n", time);
   };
 
   useEffect(() => {

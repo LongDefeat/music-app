@@ -5,6 +5,8 @@ import ControlCenter from "./ControlCenter";
 import Ticker from "./Ticker";
 import Navigation from "@/app/components/Navigation";
 
+import styles from "@/app/styles/Metronome.module.css";
+
 const Metronome: React.FC = () => {
   const metroContext = useContext(MetroContext);
 
@@ -30,12 +32,14 @@ const Metronome: React.FC = () => {
   return (
     <>
       <Navigation />
-      <h1>Metronome</h1>
-      <div>
-        {metroContext.showMetronome && (
-          <Ticker isPlaying={metroContext.isPlaying} />
-        )}
-        <ControlCenter onStart={startMetronome} onStop={stopMetronome} />
+      <div className={styles.pageContainer}>
+        <h1 className={styles.pageTitle}>Metronome</h1>
+        <div>
+          {metroContext.showMetronome && (
+            <Ticker isPlaying={metroContext.isPlaying} />
+          )}
+          <ControlCenter onStart={startMetronome} onStop={stopMetronome} />
+        </div>
       </div>
     </>
   );
