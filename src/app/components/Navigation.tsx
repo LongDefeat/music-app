@@ -37,6 +37,11 @@ export default function Navigation() {
             Melody Generator
           </Link>
         </li>
+        <li className={styles.navItem}>
+          <Link href="/metronome" className={styles.navLink}>
+            Metronome
+          </Link>
+        </li>
       </ul>
     </nav>
   );

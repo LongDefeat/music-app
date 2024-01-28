@@ -16,11 +16,11 @@ const BPMBar: React.FC<BPMBarProps> = ({ onTempoChange }) => {
   return (
     <BPMBarContainer>
       <BPMAdjustmentButton onClick={() => onTempoChange(bpm - 1)}>
-        <SubtractLineIcon size={33} />
+        <SubtractLineIcon size={40} />
       </BPMAdjustmentButton>
       <BPMDisplay>{bpm}</BPMDisplay>
       <BPMAdjustmentButton onClick={() => onTempoChange(bpm + 1)}>
-        <AddLineIcon size={33} />
+        <AddLineIcon size={40} />
       </BPMAdjustmentButton>
     </BPMBarContainer>
   );
