@@ -9,14 +9,11 @@ interface CategorizedScales {
   [category: string]: string[];
 }
 
-export default function ScalesPage() {
-  // Fetch all scales
+const ScalesPage: React.FC = () => {
   const scales: string[] = Scale.names();
 
-  // Example categorization with TypeScript notation
   const categorizedScales: CategorizedScales = scales.reduce(
     (acc: CategorizedScales, scale: string) => {
-      // Your categorization logic
       const category: string = scale.includes("major") ? "Major" : "Minor";
       if (!acc[category]) acc[category] = [];
       acc[category].push(scale);
@@ -44,4 +41,6 @@ export default function ScalesPage() {
       </div>
     </>
   );
-}
+};
+
+export default ScalesPage;

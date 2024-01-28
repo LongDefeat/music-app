@@ -61,9 +61,37 @@ const jazzMusic: Genre = {
   ],
   relatedGenres: ["Bebop", "Swing", "Fusion", "Modal Jazz"],
 };
+const classicalMusic: Genre = {
+  name: "Classical",
+  description:
+    "Classical music is art music produced or rooted in the traditions of Western culture, encompassing a broad span of time from the 11th century to the present. It includes liturgical music as well as secular music.",
+  characteristics: [
+    "Complex compositions with sophisticated structures",
+    "Predominantly instrumental with a wide variety of instruments",
+    "Focus on harmony, melody, and rhythm",
+    "Compositions for solo, chamber, and large orchestral groups",
+  ],
+  history:
+    "Classical music has its roots in the traditions of Western culture, including both liturgical (religious) and secular music. While the term is often used to refer to the period from 1750 to 1820 (the Classical period), it has been expanded to include music from the medieval period to modern times.",
+  notableArtists: [
+    "Ludwig van Beethoven",
+    "Wolfgang Amadeus Mozart",
+    "Johann Sebastian Bach",
+    "Franz Schubert",
+  ],
+  sampleTracks: [
+    "https://example.com/classicaltrack1",
+    "https://example.com/classicaltrack2",
+  ],
+  relatedGenres: ["Baroque", "Romantic", "Contemporary Classical", "Opera"],
+};
 
 const GenresPage: React.FC = () => {
-  const [genres, setGenres] = useState<Genre[]>([rockMusic, jazzMusic]);
+  const [genres, setGenres] = useState<Genre[]>([
+    rockMusic,
+    jazzMusic,
+    classicalMusic,
+  ]);
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
   // Fetch genres data from your data source/API
