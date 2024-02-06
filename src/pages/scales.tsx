@@ -21,22 +21,32 @@ const ScalesPage: React.FC = () => {
     },
     {}
   );
+  const handleScaleClick = (scale: string) => {
+    // Redirect to the page that demonstrates the scale degrees in C major
+    window.location.href = `/scale-degrees?scale=${scale}&key=C`;
+  };
+
+  const renderScaleLinks = () => {
+    return Object.entries(categorizedScales).map(([category, scales]) => (
+      <div key={category} className={styles.categoryDiv}>
+        <h2 className={styles.categoryTitle}>{category}</h2>
+        <ul className={styles.ulNoBullets}>
+          {scales.map((scale: string) => (
+            <li key={scale}>
+              <button onClick={() => handleScaleClick(scale)}>{scale}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ));
+  };
 
   return (
     <>
       <Navigation />
       <div className={styles.container}>
         <h1 className={styles.pageTitle}>All Scales</h1>
-        {Object.entries(categorizedScales).map(([category, scales]) => (
-          <div key={category} className={styles.categoryDiv}>
-            <h2 className={styles.categoryTitle}>{category}</h2>
-            <ul className={styles.ulNoBullets}>
-              {scales.map((scale: string) => (
-                <li key={scale}>{scale}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {renderScaleLinks()}
         <Link href="/">Back to Home</Link>
       </div>
     </>
